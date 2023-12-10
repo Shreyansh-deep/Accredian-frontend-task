@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import waveBackground from './assets/images/wave-bg.jpg';
+import { AppRoutes } from './constants/routes';
+
+import SignUp from './components/sign-up/sign-up.component';
+import Login from './components/login/login.component';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App' style={{ backgroundImage: `url(${waveBackground})` }}>
+      <div className='glass-morph-container'>
+        <Routes>
+          <Route path='/' element={<Navigate to={AppRoutes.login} />} />
+          <Route path={AppRoutes.signUp} element={<SignUp />} />
+          <Route path={AppRoutes.login} element={<Login />} />
+        </Routes>
+      </div>
     </div>
   );
 }
