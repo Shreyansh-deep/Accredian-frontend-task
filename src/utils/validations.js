@@ -24,8 +24,8 @@ export const validateConfirmPassword = (value, prevPassword) => {
 export const validateDetails = (value, fieldName, password) => {
   let message = '';
   switch (fieldName) {
-    case 'name':
-      message = validateUsername(value, 'name');
+    case 'username':
+      message = validateUsername(value, 'username');
       break;
     case 'email':
       message = validateEmail(value, 'email');

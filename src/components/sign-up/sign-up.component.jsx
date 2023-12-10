@@ -3,12 +3,19 @@ import { Link } from 'react-router-dom';
 
 import { AppRoutes } from '../../constants/routes';
 import { signUp } from '../../services/auth.service';
+import { notify } from '../../utils/toast.utils';
 
 import AuthForm from '../shared/auth-form.component';
 
 const SignUp = () => {
   const handleSubmit = async (details) => {
-    await signUp(details);
+    const { error } = await signUp(details);
+
+    if (error) {
+      notify(error.message, 'error');
+    } else {
+      notify('Signup successful', 'success');
+    }
   };
 
   return (

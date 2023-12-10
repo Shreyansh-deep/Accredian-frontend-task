@@ -7,6 +7,10 @@ import SignUp from './components/sign-up/sign-up.component';
 import Login from './components/login/login.component';
 
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import { toastContainerConfig } from './utils/toast.utils';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -18,6 +22,7 @@ function App() {
           <Route path={AppRoutes.login} element={<Login />} />
         </Routes>
       </div>
+      <ToastContainer {...toastContainerConfig} />
     </div>
   );
 }

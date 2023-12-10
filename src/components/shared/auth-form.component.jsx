@@ -8,7 +8,7 @@ import './auth-form.styles.css';
 
 const defaultDetails = {
   email: '',
-  name: '',
+  username: '',
   password: '',
   confirmPassword: '',
 };
@@ -20,16 +20,12 @@ const AuthForm = ({ isSignUp, handleSubmit }) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-
     //call submit if there are no errors
     if (!Object.values(errors).every((error) => error.length)) {
-      try {
-        setLoading(true);
-        await handleSubmit(formDetails);
-      } catch (error) {
-      } finally {
-        setLoading(false);
-      }
+      setLoading(true);
+      const res = await handleSubmit(formDetails);
+      setLoading(false);
+      return res;
     }
   };
 
@@ -60,7 +56,7 @@ const AuthForm = ({ isSignUp, handleSubmit }) => {
     <form className='auth-form' onSubmit={onSubmit}>
       <TextField
         fullWidth
-        name='name'
+        name='username'
         label='Username'
         onChange={handleChange}
         error={formDetails.name && errors.name}
